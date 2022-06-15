@@ -42,15 +42,99 @@ export default function RestaurantsList() {
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
+              marginTop: 10,
+              backgroundColor: '#cccccc',
+              padding: 15,
+              borderRadius: 10,
             }}>
             <Image
-              style={{ width: 150, height: 150 }}
+              style={{
+                width: 80,
+                height: 80,
+                marginRight: 16,
+                borderRadius: 15,
+              }}
               source={{
                 uri: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
               }}
             />
+            <View>
+              <Text
+                style={{ fontWeight: '600', fontSize: 18, marginBottom: 8 }}>
+                Choose Kigali
+              </Text>
+              <Text
+                style={{ fontWeight: '600', fontSize: 16, color: '#808080' }}>
+                World, Africa, Pizzeria, Coffee
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginTop: 10,
+              backgroundColor: '#cccccc',
+              padding: 15,
+              borderRadius: 10,
+            }}>
+            <Image
+              style={{
+                width: 80,
+                height: 80,
+                marginRight: 16,
+                borderRadius: 15,
+              }}
+              source={{
+                uri: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+              }}
+            />
+            <View>
+              <Text
+                style={{ fontWeight: '600', fontSize: 18, marginBottom: 8 }}>
+                Choose Kigali
+              </Text>
+              <Text
+                style={{ fontWeight: '600', fontSize: 16, color: '#808080' }}>
+                World, Africa, Pizzeria, Coffee
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginVertical: 30,
+              backgroundColor:"#cccccc",
+              padding:15,
+              borderRadius:10
+            }}>
+            <Image
+              style={{
+                width: 80,
+                height: 80,
+                marginRight: 16,
+                borderRadius: 15,
+              }}
+              source={{
+                uri: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+              }}
+            />
+            <View>
+              <Text
+                style={{ fontWeight: '600', fontSize: 18, marginBottom: 8 }}>
+                Choose Kigali
+              </Text>
+              <Text
+                style={{ fontWeight: '600', fontSize: 16, color: '#808080' }}>
+                World, Africa, Pizzeria, Coffee
+              </Text>
+            </View>
           </View>
         </View>
+        
       </View>
     </View>
   );
@@ -73,6 +157,6 @@ const styles = StyleSheet.create({
 
   mainContent: {
     marginTop: 15,
-    marginHorizontal: 30,
+    marginHorizontal: 20,
   },
 });
