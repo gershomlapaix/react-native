@@ -1,25 +1,27 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
-import {NavigationContainer} from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RegisterScreen from './components/Auth/Register'
+import LoginScreen from './components/Auth/Login';
+import RestaurantsList from './components/Pages/RestaurantsList';
+import HomeScreen from './components/Pages/Home';
+import AssetExample from './components/AssetExample';
 
-const stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
-export default function Home() {
+export default function App() {
   return (
-   <View style={styles.container}>
-   <Text style={{fontWeight:"bold", fontSize:30, textAlign:'center'}}>Supa menu</Text>
-   </View>
-  )
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Supa menu app' }}
+        />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-});
