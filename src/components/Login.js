@@ -10,8 +10,13 @@ import {
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import AuthContext from '../context/AuthContext';
 
 const Login = () => {
+  const { username, setUsername } = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const { signin } = React.useContext(AuthContext);
+
   return (
     <View style={styles.container}>
       <View style={styles.form}>
@@ -21,12 +26,19 @@ const Login = () => {
               <Text style={styles.appNameText1}>Supa</Text>
               <Text style={styles.appNameText2}>Menu</Text>
             </View>
-            <Text style={{marginVertical:10, marginBottom:15}}>Welcome ...</Text>
+            <Text style={{ marginVertical: 10, marginBottom: 15 }}>
+              Welcome ...
+            </Text>
             <Text>Please fill in the information</Text>
           </View>
 
           <View style={{ position: 'relative' }}>
-            <TextInput placeholder="Your email" style={styles.formInput} />
+            <TextInput
+              placeholder="Your email"
+              style={styles.formInput}
+              value={username}
+              onChangeText={setUsername}
+            />
             <Ionicons
               name="mail-outline"
               size={24}
@@ -36,7 +48,12 @@ const Login = () => {
           </View>
 
           <View style={{ position: 'relative' }}>
-            <TextInput placeholder="password" style={styles.formInput} />
+            <TextInput
+              placeholder="password"
+              style={styles.formInput}
+              value={password}
+              onChangeText={setPassword}
+            />
             <Feather
               name="lock"
               size={24}
@@ -46,7 +63,9 @@ const Login = () => {
           </View>
 
           <View style={styles.actions}>
-            <Pressable style={styles.btn}>
+            <Pressable
+              style={styles.btn}
+              onPress={() => signin({ username, password })}>
               <Text style={styles.btnText}>Sign in</Text>
             </Pressable>
           </View>
@@ -125,7 +144,7 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    marginTop: 100,
+    marginTop: 60,
     backgroundColor: '#fff',
     width: '100%',
     borderTopLeftRadius: 50,
@@ -179,7 +198,7 @@ const styles = StyleSheet.create({
   forgotBtnText: {
     color: '#F7941D',
     fontWeight: '700',
-    marginVertical:6
+    marginVertical: 6,
   },
 
   loginWith: {
