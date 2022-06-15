@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const Login = () => {
   return (
@@ -24,20 +25,50 @@ const Login = () => {
             <Text>Please fill in the information</Text>
           </View>
 
-          <View style={{position:"relative"}}>
+          <View style={{ position: 'relative' }}>
             <TextInput placeholder="Your email" style={styles.formInput} />
-            <AntDesign name="google" size={24} color="blue" style={{position:"absolute", top:15,left:20}} />
+            <Ionicons
+              name="mail-outline"
+              size={24}
+              color="black"
+              style={{ position: 'absolute', top: 15, left: 20 }}
+            />
           </View>
 
-          <View style={{position:"relative"}}>
+          <View style={{ position: 'relative' }}>
             <TextInput placeholder="password" style={styles.formInput} />
-            <Feather name="facebook" size={24} color="black" style={{position:"absolute", top:15,left:20}}/>
+            <Feather
+              name="lock"
+              size={24}
+              color="black"
+              style={{ position: 'absolute', top: 15, left: 20 }}
+            />
           </View>
 
           <View style={styles.actions}>
             <Pressable style={styles.btn}>
               <Text style={styles.btnText}>Sign in</Text>
             </Pressable>
+          </View>
+
+          <View style={styles.actions}>
+            <Text style={{ marginVertical: 10, fontWeight: '700' }}>OR</Text>
+
+            <Pressable style={styles.loginWith}>
+              <Text style={styles.loginWith}>Login with google</Text>
+            </Pressable>
+
+            <Pressable style={styles.loginWith}>
+              <Text style={styles.loginWith}>Login with google</Text>
+            </Pressable>
+
+            <View style={styles.actionsRegister}>
+              <Text>Don't have an account? </Text>
+
+              <Pressable>
+                <Text style={styles.registerBtnText}>Register</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </View>
@@ -107,7 +138,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: '#cccccc',
     padding: 15,
-    paddingLeft:70,
+    paddingLeft: 60,
     borderRadius: 10,
     marginBottom: 20,
   },
@@ -127,6 +158,16 @@ const styles = StyleSheet.create({
   registerBtnText: {
     color: '#F7941D',
     fontWeight: '700',
+  },
+
+  loginWith: {
+    display:"flex",
+    flexDirection:"row",
+    backgroundColor: '#f0efed',
+    paddingHorizontal: 55,
+    paddingVertical: 6,
+    marginVertical: 5,
+    borderRadius:6
   },
 });
 
