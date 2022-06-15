@@ -5,14 +5,6 @@ import { Text, View, StyleSheet } from 'react-native';
 
 const AuthContext = React.createContext();
 
-function SplashScreen() {
-  return (
-    <View>
-      <Text>Loading...</Text>
-    </View>
-  );
-}
-
 function AuthContextProvider(props) {
   const reducer = (prevState, action) => {
     switch (action.type) {
@@ -60,24 +52,27 @@ function AuthContextProvider(props) {
     bootstrapAsync();
   }, []);
 
-  const authContext = React.useMemo(() => ({
-    signin: async (data) => {
-      // dispatch({ type: 'SIGN_IN', token: 'dummy-token' });
-      const response = await axios.post(
-        'http://196.223.240.154:8099/supapp/api/auth/signin',
-        {
-          login: 'lapaix@gmail.com',
-          password: '#Lapaix1',
-        }
-      );
-
-      console.log(response);
-    },
-    signOut: () => dispatch({ type: 'SIGN_OUT' }),
-    signUp: async (data) => {
-      dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
-    },
-  }));
+  const authContext = React.useMemo(
+    () => ({
+      signIn: async (data) => {
+        console.log(data)
+        const response = await axios.post(
+          'http://196.223.240.154:8099/supapp/api/auth/signin',
+          {
+            login: data.username,
+            password: data.password,
+          }
+        );
+        console.log(response)
+      },
+      signOut: () => dispatch({ type: 'SIGN_OUT' }),
+      signUp: async (data) => {
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+      },
+      getState: () => state
+    }),
+    [state]
+  );
 
   return (
     <AuthContext.Provider value={authContext}>

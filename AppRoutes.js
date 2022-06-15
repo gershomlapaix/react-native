@@ -10,6 +10,7 @@ import RestaurantsList from './components/Pages/RestaurantsList';
 import HomeScreen from './components/Pages/Home';
 import BottomNavScreen from './components/Pages/BottomNav';
 import AssetExample from './components/AssetExample';
+import AuthContext from './components/context/AuthContext';
 
 // splash screen
 function SplashScreen() {
@@ -23,18 +24,31 @@ function SplashScreen() {
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
+  const { getState } = React.useContext(AuthContext);
+  const state = getState();
+  
   return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        {
+        //   state.isLoading ? (
+        //   <Stack.Screen name="Splash" component={SplashScreen} />
+        // ) : 
+        
+        state.userToken == null ? (
           <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{ title: 'Supa menu app' }}
+            name="Login"
+            component={LoginScreen}
+            options={{
+              title: 'Sign in',
+              // When logging out, a pop animation feels intuitive
+              animationTypeForReplace: state.isSignout ? 'pop' : 'push',
+            }}
           />
-          <Stack.Screen name="Register" component={RegisterScreen} />
+        ) : (
           <Stack.Screen name="Bnav" component={BottomNavScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
