@@ -21,7 +21,7 @@ const Login = () => {
               <Text style={styles.appNameText1}>Supa</Text>
               <Text style={styles.appNameText2}>Menu</Text>
             </View>
-            <Text>Welcome ...</Text>
+            <Text style={{marginVertical:10, marginBottom:15}}>Welcome ...</Text>
             <Text>Please fill in the information</Text>
           </View>
 
@@ -55,11 +55,27 @@ const Login = () => {
             <Text style={{ marginVertical: 10, fontWeight: '700' }}>OR</Text>
 
             <Pressable style={styles.loginWith}>
+              <Ionicons
+                name="logo-google"
+                size={24}
+                color="black"
+                style={{ position: 'absolute', top: 15, left: 20 }}
+              />
               <Text style={styles.loginWith}>Login with google</Text>
             </Pressable>
 
             <Pressable style={styles.loginWith}>
+              <Ionicons
+                name="logo-facebook"
+                size={24}
+                color="blue"
+                style={{ position: 'absolute', top: 15, left: 20 }}
+              />
               <Text style={styles.loginWith}>Login with google</Text>
+            </Pressable>
+
+            <Pressable>
+              <Text style={styles.forgotBtnText}>Forgot password?</Text>
             </Pressable>
 
             <View style={styles.actionsRegister}>
@@ -160,14 +176,20 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 
+  forgotBtnText: {
+    color: '#F7941D',
+    fontWeight: '700',
+    marginVertical:6
+  },
+
   loginWith: {
-    display:"flex",
-    flexDirection:"row",
+    display: 'flex',
+    flexDirection: 'row',
     backgroundColor: '#f0efed',
     paddingHorizontal: 55,
     paddingVertical: 6,
     marginVertical: 5,
-    borderRadius:6
+    borderRadius: 6,
   },
 });
 
