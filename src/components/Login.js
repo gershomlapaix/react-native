@@ -15,7 +15,7 @@ import AuthContext from '../context/AuthContext';
 const Login = () => {
   const { username, setUsername } = React.useState('');
   const [password, setPassword] = React.useState('');
-  const { signin } = React.useContext(AuthContext);
+  const { signIn } = React.useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -63,11 +63,8 @@ const Login = () => {
           </View>
 
           <View style={styles.actions}>
-            <Pressable
-              style={styles.btn}
-              onPress={() => signin({ username, password })}>
-              <Text style={styles.btnText}>Sign in</Text>
-            </Pressable>
+                        <Button onPress={() => signIn({ username, password })} title="SIgnin"/>
+
           </View>
 
           <View style={styles.actions}>
@@ -144,7 +141,7 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    marginTop: 60,
+    marginTop: 40,
     backgroundColor: '#fff',
     width: '100%',
     borderTopLeftRadius: 50,
