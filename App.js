@@ -1,34 +1,22 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
-import Login from './components/Auth/Register'
-
-// You can import from local files
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './components/Auth/Login';
+import RestaurantsList from './components/Pages/RestaurantsList';
+import HomeScreen from './components/Pages/Home';
 import AssetExample from './components/AssetExample';
 
-// or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View>
-      <Login/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Login" component={LoginScreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});
