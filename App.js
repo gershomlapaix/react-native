@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Text, View, StyleSheet, TextInput, Button } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Button, Pressable } from 'react-native';
 
 const Login = ()=>{
   return(
@@ -7,17 +7,39 @@ const Login = ()=>{
     <View style = {styles.container}>
       <View style={styles.form}>
        <View style={styles.formContent}>
-        <View style={styles.appName}>
+        <View style={styles.welcome}>
+         <View style={styles.appName}>
           <Text style={styles.appNameText1}>Supa</Text>
           <Text style={styles.appNameText2}>Menu</Text>
         </View>
        <Text>Welcome ...</Text>
        <Text>Please fill in the information</Text>
 
+        </View>
        <TextInput placeholder="Full name" style={styles.formInput}/>
        <TextInput placeholder="Phone number" style={styles.formInput}/>
        <TextInput placeholder="Your email" style={styles.formInput}/>
 
+        <View style={styles.actions}>
+          <Pressable style={styles.btn}>
+            <Text style={styles.btnText}>Proceed</Text>
+            </Pressable>
+
+          <Text>OR</Text>
+          <Text>If you have a PMG account</Text>
+
+         <Pressable style={styles.btn}>
+            <Text>Sign in</Text>
+            </Pressable>
+
+            <View style={styles.actionsRegister}>
+            <Text>Don't have an account? </Text>
+
+            <Pressable style={styles.btn}>
+            <Text>Register</Text>
+            </Pressable>
+            </View>
+        </View>
        </View>
       </View>
     </View>
@@ -33,9 +55,20 @@ const styles = StyleSheet.create({
     width:'100%'
   },
 
+  welcome:{
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    alignContent:'space-around',
+    flexDirection:'column',
+    height:'25%'
+  },
+
   appName:{
     display:"flex",
     flexDirection:'row',
+    justifyContent:'center',
+    fontWeight:400
   },
 
   appNameText1:{
@@ -60,11 +93,37 @@ const styles = StyleSheet.create({
     paddingHorizontal:20
   },
 
+  btn:{
+    backgroundColor:"#F7941D",
+    paddingHorizontal:"37%",
+    paddingVertical:20,
+    marginVertical:20,
+    borderRadius:10
+  },
+
+  btnText:{
+    color:"white",
+    fontSize:20,
+    fontWeight:"700"
+  },
+
   formInput:{
     borderWidth:2,
-    padding:25,
-    borderRadius:25,
+    padding:15,
+    borderRadius:10,
     marginBottom:20
+  },
+
+  actions:{
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center'
+  },
+
+  actionsRegister:{
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center'
   }
 })
 
