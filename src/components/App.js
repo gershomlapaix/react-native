@@ -4,12 +4,12 @@ import Constants from 'expo-constants';
 import * as SecureStore from 'expo-secure-store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import RegisterScreen from './components/Auth/Register';
-import LoginScreen from './components/Auth/Login';
-import RestaurantsList from './components/Pages/RestaurantsList';
-import HomeScreen from './components/Pages/Home';
-import BottomNavScreen from './components/Pages/BottomNav';
-import AssetExample from './components/AssetExample';
+import RegisterScreen from './src/components/Auth/Register';
+import LoginScreen from './src/components/Auth/Login';
+import RestaurantsList from './src/components/Pages/RestaurantsList';
+import HomeScreen from './src/components/Pages/Home';
+import BottomNavScreen from './src/components/Pages/BottomNav';
+import AssetExample from './src/components/AssetExample';
 
 const AuthContext = React.createContext();
 

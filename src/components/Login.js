@@ -12,10 +12,12 @@ import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import AuthContext from '../context/AuthContext';
 
-const Login = () => {
-  const { username, setUsername } = React.useState('');
+const Login = () => {  
+  const [username, setUsername]= React.useState('');
   const [password, setPassword] = React.useState('');
+
   const { signIn } = React.useContext(AuthContext);
+
 
   return (
     <View style={styles.container}>
