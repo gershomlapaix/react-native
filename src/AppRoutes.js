@@ -8,7 +8,7 @@ import RegisterScreen from './components/Auth/Register';
 import LoginScreen from './components/Auth/Login';
 import RestaurantsList from './components/Pages/RestaurantsList';
 import HomeScreen from './components/Pages/Home';
-import BottomNavScreen from './components/BottomNav';
+import BottomNavScreen from './components/pages/BottomNav';
 import AssetExample from './components/AssetExample';
 import AuthContext from './components/context/AuthContext';
 
