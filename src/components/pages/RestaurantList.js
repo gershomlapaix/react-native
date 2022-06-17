@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios'
 import {
   Text,
   View,
@@ -12,6 +13,19 @@ import { Feather } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function RestaurantsList({ navigation }) {
+  const [restaurants, setRestaurants] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(true)
+
+  React.useEffect(()=>{
+    const getRestaurants = async()=>{
+      const res = await axios.get("http://196.223.240.154:8099/supapp/api/service-providers");
+
+      setRestaurants(res.data.content)
+      setIsLoading(false)
+    }
+
+    getRestaurants();
+  },[])
   return (
     <View style={styles.container}>
       <View style={styles.containerContent}>
