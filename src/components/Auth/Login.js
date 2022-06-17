@@ -1,32 +1,215 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
-import * as SecureStore from 'expo-secure-store';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import RegisterScreen from './components/Auth/Register';
-import LoginScreen from './components/Auth/Login';
-import RestaurantsList from './components/Pages/RestaurantsList';
-import HomeScreen from './components/Pages/Home';
-import BottomNavScreen from './components/Pages/BottomNav';
-import { AuthContextProvider } from './components/context/AuthContext';
-import AppRoutes from './AppRoutes';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Button,
+  Pressable,
+} from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import AuthContext from '../context/AuthContext';
 
-const AuthContext = React.createContext();
+const Login = () => {  
+  const [username, setUsername]= React.useState('');
+  const [password, setPassword] = React.useState('');
 
-// splash screen
-function SplashScreen() {
+  const { signIn } = React.useContext(AuthContext);
+
+
   return (
-    <View>
-      <Text>Loading...</Text>
+    <View style={styles.container}>
+      <View style={styles.form}>
+        <View style={styles.formContent}>
+          <View style={styles.welcome}>
+            <View style={styles.appName}>
+              <Text style={styles.appNameText1}>Supa</Text>
+              <Text style={styles.appNameText2}>Menu</Text>
+            </View>
+            <Text style={{ marginVertical: 10, marginBottom: 15 }}>
+              Welcome ...
+            </Text>
+            <Text>Please fill in the information</Text>
+          </View>
+
+          <View style={{ position: 'relative' }}>
+            <TextInput
+              style={styles.formInput}
+              placeholder="Username"
+        value={username}
+        onChangeText={setUsername}
+            />
+            <Ionicons
+              name="mail-outline"
+              size={24}
+              color="black"
+              style={{ position: 'absolute', top: 15, left: 20 }}
+            />
+          </View>
+
+          <View style={{ position: 'relative' }}>
+            <TextInput
+              style={styles.formInput}
+               placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+            />
+            <Feather
+              name="lock"
+              size={24}
+              color="black"
+              style={{ position: 'absolute', top: 15, left: 20 }}
+            />
+          </View>
+
+          <View style={styles.actions}>
+                        <Button  title="SIgnin" onPress={() => signIn({ username, password })}/>
+
+          </View>
+
+          <View style={styles.actions}>
+            <Text style={{ marginVertical: 10, fontWeight: '700' }}>OR</Text>
+
+            <Pressable style={styles.loginWith}>
+              <Ionicons
+                name="logo-google"
+                size={24}
+                color="black"
+                style={{ position: 'absolute', top: 15, left: 20 }}
+              />
+              <Text style={styles.loginWith}>Login with google</Text>
+            </Pressable>
+
+            <Pressable style={styles.loginWith}>
+              <Ionicons
+                name="logo-facebook"
+                size={24}
+                color="blue"
+                style={{ position: 'absolute', top: 15, left: 20 }}
+              />
+              <Text style={styles.loginWith}>Login with google</Text>
+            </Pressable>
+
+            <Pressable>
+              <Text style={styles.forgotBtnText}>Forgot password?</Text>
+            </Pressable>
+
+            <View style={styles.actionsRegister}>
+              <Text>Don't have an account? </Text>
+
+              <Pressable>
+                <Text style={styles.registerBtnText}>Register</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </View>
     </View>
   );
-}
+};
 
-export default function () {
-  return (
-    <AuthContextProvider>
-      <AppRoutes />
-    </AuthContextProvider>
-  );
-}
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#F7941D',
+    height: '100%',
+    width: '100%',
+  },
+
+  welcome: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'space-around',
+    flexDirection: 'column',
+    height: '25%',
+  },
+
+  appName: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    fontWeight: 400,
+  },
+
+  appNameText1: {
+    fontSize: '55',
+  },
+
+  appNameText2: {
+    fontSize: '55',
+    color: '#F7941D',
+  },
+
+  form: {
+    marginTop: 40,
+    backgroundColor: '#fff',
+    width: '100%',
+    borderTopLeftRadius: 50,
+    borderTopEndRadius: 50,
+    height: '100%',
+  },
+  formContent: {
+    paddingHorizontal: 20,
+  },
+
+  btn: {
+    backgroundColor: '#F7941D',
+    paddingHorizontal: '37%',
+    paddingVertical: 20,
+    marginVertical: 20,
+    borderRadius: 10,
+  },
+
+  btnText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '700',
+  },
+
+  formInput: {
+    borderWidth: 1.5,
+    borderColor: '#cccccc',
+    padding: 15,
+    paddingLeft: 60,
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+
+  actions: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+
+  actionsRegister: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  registerBtnText: {
+    color: '#F7941D',
+    fontWeight: '700',
+  },
+
+  forgotBtnText: {
+    color: '#F7941D',
+    fontWeight: '700',
+    marginVertical: 6,
+  },
+
+  loginWith: {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: '#f0efed',
+    paddingHorizontal: 55,
+    paddingVertical: 6,
+    marginVertical: 5,
+    borderRadius: 6,
+  },
+});
+
+export default Login;
