@@ -55,7 +55,6 @@ function AuthContextProvider(props) {
   const authContext = React.useMemo(
     () => ({
       signIn: async (data) => {
-        console.log(data)
         const response = await axios.post(
           'http://196.223.240.154:8099/supapp/api/auth/signin',
           {
@@ -64,6 +63,8 @@ function AuthContextProvider(props) {
           }
         );
         console.log(response)
+                dispatch({ type: 'SIGN_IN', token: response.data.token.accessToken });
+
       },
       signOut: () => dispatch({ type: 'SIGN_OUT' }),
       signUp: async (data) => {
